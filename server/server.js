@@ -1,42 +1,54 @@
 const express = require ("express");
 const dotenv =require("dotenv");
 const connectDB = require ("./config/db.js");
-// const colors =require ("colors");
-// const path= require ("path");
+const User = require('./db/Users');
 
 dotenv.config();
-
 connectDB();
 
-const app = express(); // main thing
+const app = express(); 
+app.use(express.json());
 
-app.use(express.json()); // to accept json data
+app.post("/register", async (req,resp) =>{
+    let user = new User(req.body);
+    let result = await user.save();
+    resp.send(result);
+});
 
-// app.use("/api/notes", noteRoutes);
-// app.use("/api/users", userRoutes);
 
-// // --------------------------deployment------------------------------
-// const __dirname = path.resolve();
+const middleware = (req,res, next) => {
+    console.log(`Hello my Middleware`);
+    next();
+}
 
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static(path.join(__dirname, "/frontend/build")));
+app.get('/', (req, res) => {
+    res.send(`Hello world from the server app.js`);
+});
 
-//   app.get("*", (req, res) =>
-//     res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
-//   );
-// } else {
-//   app.get("/", (req, res) => {
-//     res.send("API is running..");
-//   });
-// }
-// --------------------------deployment------------------------------
+app.get('/about', middleware, (req, res) => {
+    console.log(`Hello my About`);
+    res.send(`Hello About world from the server`);
+});
 
-// // Error Handling middlewares
-// app.use(notFound);
-// app.use(errorHandler);
+app.get('/contact', (req, res) => {
+    res.send(`Hello Contact world from the server`);
+});
+
+app.get('/signin', (req, res) => {
+    res.send(`Hello Login world from the server`);
+});
+
+app.get('/signup', (req, res) => {
+    res.send(`Hello Registration world from the server`);
+});
+
+
+
+
+
+
 
 const PORT = process.env.PORT;
-
 app.listen(PORT, () => {
     console.log(
         `Server running in ${process.env.NODE_ENV} mode on port ${PORT}..`.yellow
