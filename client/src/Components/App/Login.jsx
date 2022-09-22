@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom'
-import logo from '../asset/logo.webp'
+import logo from '../App/asset/logo.webp'
 
 const Login = () => {
 
