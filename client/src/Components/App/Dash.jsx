@@ -20,19 +20,85 @@ import Invo from '../App/asset/invo.svg';
 import totalProduct from '../App/asset/totalpro.svg';
 import Brand from '../App/asset/brand.svg'
 import Orders from '../App/asset/toO.svg'
-
+/* Imported Component for drop down menu */
+import Dropdown from './props/Dropdown';
 const Dash = () => {
-  const [isProduct, setIsProduct] = useState("false");
 
-  const productToggle = () => {
-    setIsProduct(!isProduct);
-  };
-  const [isActive, setActive] = useState("false");
+  /* Start --> List for options of Products */
+  const products=[
+    {
+      label:'Brand',
+      labelLink:'/about',
+    },
+    {
+      label:'Category',
+      labelLink:'/about',
+    },
+    {
+      label:'Subcategory',
+      labelLink:'/about',
+    },
+    {
+      label:'Sub Subcategory',
+      labelLink:'/about',
+    },
+    {
+      label:'Products',
+      labelLink:'/about',
+    },
+    {
+      label:'User Discount Product',
+      labelLink:'/about',
+    },
+    {
+      label:'Classified Products',
+      labelLink:'/about',
+    },
+    {
+      label:'Digital Proucts',
+      labelLink:'/about',
+    },
+    {
+      label:'Bulk Import',
+      labelLink:'/about',
+    },
+    {
+      label:'Bulk Export',
+      labelLink:'/about',
+    },
+    {
+      label:'Product Reviews',
+      labelLink:'/about',
+    },
+  ];
+  /* End --> List for options of Products */
 
-  const handleToggle = () => {
-    setActive(!isActive);
-  };
-    
+  /* Start --> List for options of Invoices */
+  const invoices=[
+    {
+      label:'Paid Invoice',
+      labelLink:'/about',
+    },
+    {
+      label:'Paid Invoice',
+      labelLink:'/about',
+    },
+  ];
+  /* End --> List for options of Invoices */
+
+  /* Start --> List for options of Customers */
+  const Customers=[
+    {
+      label:'Customers list',
+      labelLink:'/about',
+    },
+    {
+      label:'Customers Packages',
+      labelLink:'/about',
+    },
+  ];
+  /* End --> List for options of Customers */
+  
   const data = [
     ["Task", "Hours per Day"],
     ["Work", 11],
@@ -47,7 +113,9 @@ const Dash = () => {
    };
 
   return (
-<section className="min-h-screen">
+
+
+<div className="min-h-screen">
   {/* Sidebar*/}
   <div className="w-40 sm:w-72 bg-secoundery h-full fixed overflow-hidden">
   </div>
@@ -64,58 +132,10 @@ const Dash = () => {
             <span className="text-sm font-medium">Dashboard</span>
           </Link>
         </li>
-        <li>
-          <button type="button" onClick={productToggle}
-           className="flex items-center pr-3 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-primary" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-            <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-white"><i className="bx bx-home" /></span>
-            <span className="flex-1 text-left text-sm font-medium whitespace-nowrap" sidebar-toggle-item>Products</span>
-            <svg sidebar-toggle-item className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
-          </button>
-          <ul className={isProduct ? "block" : "hidden"}>
-            <li>
-              <Link to="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">Brand</Link>
-            </li>
-            <li>
-              <Link to="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
-                Category</Link>
-            </li>
-            <li>
-              <Link to ="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
-                Subcategory</Link>
-            </li>
-            <li>
-              <Link to="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
-                Sub Subcategory</Link>
-            </li>
-            <li>
-              <Link to="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
-                Products</Link>
-            </li>
-            <li>
-              <Link to="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
-                User Discount Product</Link>
-            </li>
-            <li>
-              <Link to="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
-                Classified Products</Link>
-            </li>
-            <li>
-              <Link to="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
-                Digital Products</Link>
-            </li>
-            <li>
-              <Link to="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
-                Bulk Import</Link>
-            </li>
-            <li>
-              <Link to="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
-                Bulk Export</Link>
-            </li>
-            <li>
-              <Link to="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
-                Product Reviews</Link>
-            </li>
-          </ul>
+        <li>  
+        {/* Start --> Component called for Menu of Products */}
+        <Dropdown title={"Products"} data={products} />
+        {/* End --> Component called for Menu of Products */}
         </li>
         <li>
           <Link to="./" className="flex flex-row items-center h-10 text-white hover:bg-primary">
@@ -131,21 +151,9 @@ const Dash = () => {
           </Link>
         </li>
         <li>
-          <button type="button" className="flex items-center pr-3 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-primary" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-            <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-white"><i className="bx bx-home" /></span>
-            <span className="flex-1 text-left text-base font-medium whitespace-nowrap" sidebar-toggle-item>Invoice</span>
-            <svg sidebar-toggle-item className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
-          </button>
-          <ul id className="hidden space-y-2">
-            <li>
-              <Link to="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
-                Pending Invoice</Link>
-            </li>
-            <li>
-              <Link to="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
-                Paid Invoice</Link>
-            </li>
-          </ul>
+          {/* Start --> Component called for Menu of Products */}
+        <Dropdown title={"Invoice"} data={invoices}/>
+        {/* End --> Component called for Menu of Products */}
         </li>
         <li>
           <Link to="./" className="flex flex-row items-center h-10 text-white hover:bg-primary">
@@ -654,7 +662,7 @@ const Dash = () => {
       </div>
     </div>
   </div>
-</section>
+</div>
 
 
   )
