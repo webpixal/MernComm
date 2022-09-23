@@ -1,15 +1,26 @@
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
-import Card from '../App/asset/card.svg'
-import Bell from '../App/asset/bell.svg'
-import message from '../App/asset/message.svg'
+import Card from '../App/asset/card.svg';
+import Bell from '../App/asset/bell.svg';
+import message from '../App/asset/message.svg';
+import Sidebar from '../App/asset/sidebar.svg';
+import Vector from '../App/asset/Vector.svg';
+import world from '../App/asset/world.svg';
+import cardBlack from '../App/asset/cardblack.svg';
+import Category from '../App/asset/Categor.svg';
+import Confrim from '../App/asset/confirmed.svg';
+import Customer from '../App/asset/custumer.svg';
+import Image from '../App/asset/imgp.jpg';
+import People from '../App/asset/people.svg';
+import ProOrder from '../App/asset/procorder.svg';
+import Ship from '../App/asset/shipping-truck.svg'
+import totalOrder from '../App/asset/totalorder.svg';
+import totalProduct from '../App/asset/totalpro.svg';
 
 /* Imported Component for drop down menu */
 import DropDownMenuOptions from '../dropDownMenuOptions'
 
 const Dash = () => {
-
-  const [isOpen, setIsOpen] = useState(false);
 
   /* Start --> List for options of Products */
   const products=[
@@ -73,6 +84,19 @@ const Dash = () => {
   ];
   /* End --> List for options of Invoices */
 
+  /* Start --> List for options of Customers */
+  const Customers=[
+    {
+      label:'Customers list',
+      labelLink:'/about',
+    },
+    {
+      label:'Customers Packages',
+      labelLink:'/about',
+    },
+  ];
+  /* End --> List for options of Customers */
+
   return (
     <div className="min-h-screen">
   {/* Sidebar*/}
@@ -123,7 +147,12 @@ const Dash = () => {
           </Link>
         </li>
         <li>
-          <button type="button" className="flex items-center pr-2 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-[#57B846]" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+
+          {/* Start --> Component called for Menu of Invoices */}
+          <DropDownMenuOptions title="Customer" data={Customers}/>
+          {/* End --> Component called for Menu of Invoices */}
+
+          {/* <button type="button" className="flex items-center pr-2 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-[#57B846]" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
             <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-white"><i className="bx bx-home" /></span>
             <span className="flex-1 text-left text-base font-medium whitespace-nowrap" sidebar-toggle-item>Customers</span>
             <svg sidebar-toggle-item className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
@@ -137,7 +166,7 @@ const Dash = () => {
               <Link to="/about" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
                 Customers Packages</Link>
             </li>
-          </ul>
+          </ul> */}
         </li>
         <li>
           <button type="button" className="flex items-center pr-2 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-[#57B846]" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
