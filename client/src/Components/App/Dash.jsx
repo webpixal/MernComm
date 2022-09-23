@@ -5,6 +5,9 @@ import { Chart } from "react-google-charts";
 import Card from '../App/asset/card.svg'
 import Bell from '../App/asset/bell.svg'
 import message from '../App/asset/message.svg'
+import Sidebar from '../App/asset/sidebar.svg'
+import Vector from '../App/asset/Vector.svg'
+import world from '../App/asset/world.svg'
 
 const Dash = () => {
   const [isProduct, setIsProduct] = useState("false");
@@ -28,18 +31,18 @@ const Dash = () => {
   ];
   
    const options = {
-    title: "My Daily Activities",
-  };
+    colors: ["#57b846", "#101920"],
+   };
 
   return (
 <section className="min-h-screen">
   {/* Sidebar*/}
-  <div className="w-40 sm:w-72 bg-[#101920] h-full fixed overflow-hidden">
+  <div className="w-40 sm:w-72 bg-secoundery h-full fixed overflow-hidden">
   </div>
-  <div className="w-40 sm:w-72 bg-[#101920] min-h-full absolute">
-    <div className="flex flex-col w-40 sm:w-72 bg-[#101920] min-h-screen text-white  ">
+  <div className="w-40 sm:w-72 bg-secoundery min-h-full absolute">
+    <div className="flex flex-col w-40 sm:w-72 bg-secoundery min-h-screen text-white  ">
       <div className="flex items-center justify-center h-20 ">
-        <div className="bg-primary rounded p-2"><img src="img/sidebar.svg" className=" h-6 sm:h-7" alt=" Logo" /></div>
+        <div className="bg-primary rounded p-2"><img src={Sidebar} className=" h-6 sm:h-7" alt=" Logo" /></div>
         <h2 className="ml-1 text-2xl text-primary">e<strong className="text-white">comce</strong></h2>
       </div>
       <ul className="flex flex-col">
@@ -266,15 +269,15 @@ const Dash = () => {
     <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-secoundery">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <Link to="./" className="flex items-center">
-          <img src="img/world.svg" /><h3 className="px-2 text-primary font-semibold">Browse Frontend</h3>
+          <img src={world} /><h3 className="px-2 text-primary font-semibold">Browse Frontend</h3>
         </Link>
         <div className="flex items-center md:order-2">
-          <Link to="./"><img className="px-3 py-1 mt-1" src="img/message.svg" /></Link>
-          <Link to="./"><img className="px-3" src="img/bell.svg" /></Link>
+          <Link to="./"><img className="px-3 py-1 mt-1" src={message} /></Link>
+          <Link to="./"><img className="px-3" src={Bell} /></Link>
           <h4 className="font-bold px-2">Abubakar</h4>
           <button type="button" className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
             <span className="sr-only" />
-            <img className="w-12 h-12 rounded-full" src="img/Vector.svg" alt="user photo" />
+            <img className="w-12 h-12 rounded-full" src={Vector} alt="user photo" />
           </button>
           {/* Messages Dropdown menu */}
           <div className="hidden absolute w-96 right-52 top-12 z-50 my-2 text-base list-none bg-white rounded divide-y divide-gray-100 shadow-2xl dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
@@ -384,7 +387,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src="img/card.svg" />
+                <img src={Card} />
               </div>
             </div>
           </Link>
@@ -412,7 +415,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src="img/card.svg" />
+                <img src={Card} />
               </div>
             </div>
           </Link>
@@ -440,7 +443,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src="img/card.svg" />
+                <img src={Card} />
               </div>
             </div>
           </Link>
@@ -515,7 +518,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src="img/card.svg" />
+                <img src={Card} />
               </div>
             </div>
           </Link>
@@ -534,7 +537,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src="img/card.svg" />
+                <img src={Card} />
               </div>
             </div>
           </Link>
@@ -548,7 +551,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src="img/card.svg" />
+                <img src={Card} />
               </div>
             </div>
           </Link>
@@ -601,31 +604,38 @@ const Dash = () => {
     <div className="px-2 py-1 mb-1">
       <div className="flex lg:flex-row flex-col">
         <div className=" lg:w-3/5 m-1">
-          <Link to="./" className="block bg-white px-3 py-3 rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+          <Link to="./" className="block bg-white px-3 py-3 rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <div className="rounded-lg overflow-hidden">
               <div className="py-3 px-5 font-bold">Total Revenue</div>
-              <canvas className="p-10" id="chartBar" />
+              <Chart
+                chartType="Bar"
+                data={data}
+                options={options}
+                width={"100%"}
+                height={"500px"}
+              />
             </div>
             {/* Required chart.js */}
+            
             {/* Chart bar */}
           </Link>
         </div>
         <div className=" lg:w-2/5 m-1">
-          <Link to="./" className="block  bg-white px-3 py-3 rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+          <Link to="./" className="block  bg-white px-3 py-3 rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <div className=" rounded-lg overflow-hidden">
               <div className="py-2 px-4 font-bold ">Profit chart</div>
               <div className="px-12 ">
-                <canvas className="p-3 max-h-xs" id="chartPie" />
+              <Chart
+              chartType="PieChart"
+              data={data}
+              options={options}
+              width={"100%"}
+              height={"500px"}
+            />
               </div>
             </div>
             {/* Required chart.js */}
-            <Chart
-              chartType="PieChart"
-               data={data}
-                options={options}
-               width={"100%"}
-      height={"auto"}
-            />
+                   
             {/* Chart pie */}
           </Link>
         </div>
