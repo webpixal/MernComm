@@ -1,5 +1,7 @@
 import React, {useState , createRef} from 'react'
 import {Link} from 'react-router-dom'
+import { Chart } from "react-google-charts";
+
 import Card from '../App/asset/card.svg'
 import Bell from '../App/asset/bell.svg'
 import message from '../App/asset/message.svg'
@@ -16,6 +18,19 @@ const Dash = () => {
     setActive(!isActive);
   };
     
+  const data = [
+    ["Task", "Hours per Day"],
+    ["Work", 11],
+    ["Eat", 2],
+    ["Commute", 2],
+    ["Watch TV", 2],
+    ["Sleep", 7],
+  ];
+  
+   const options = {
+    title: "My Daily Activities",
+  };
+
   return (
 <section className="min-h-screen">
   {/* Sidebar*/}
@@ -24,19 +39,19 @@ const Dash = () => {
   <div className="w-40 sm:w-72 bg-[#101920] min-h-full absolute">
     <div className="flex flex-col w-40 sm:w-72 bg-[#101920] min-h-screen text-white  ">
       <div className="flex items-center justify-center h-20 ">
-        <div className="bg-[#57B846] rounded p-2"><img src="img/sidebar.svg" className=" h-6 sm:h-7" alt=" Logo" /></div>
-        <h2 className="ml-1 text-2xl text-[#57B846]">e<strong className="text-white">comce</strong></h2>
+        <div className="bg-primary rounded p-2"><img src="img/sidebar.svg" className=" h-6 sm:h-7" alt=" Logo" /></div>
+        <h2 className="ml-1 text-2xl text-primary">e<strong className="text-white">comce</strong></h2>
       </div>
       <ul className="flex flex-col">
         <li>
-          <Link to="./" className="flex flex-row items-center h-10 rounded transition duration-75 text-white hover:bg-[#57B846]">
+          <Link to="./" className="flex flex-row items-center h-10 rounded transition duration-75 text-white hover:bg-primary">
             <span className="inline-flex items-center justify-center h-10 w-10 text-gray-400"><i className="bx bx-home" /></span>
             <span className="text-sm font-medium">Dashboard</span>
           </Link>
         </li>
         <li>
           <button type="button" onClick={productToggle}
-           className="flex items-center pr-3 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-[#57B846]" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+           className="flex items-center pr-3 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-primary" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
             <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-white"><i className="bx bx-home" /></span>
             <span className="flex-1 text-left text-sm font-medium whitespace-nowrap" sidebar-toggle-item>Products</span>
             <svg sidebar-toggle-item className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
@@ -88,20 +103,20 @@ const Dash = () => {
           </ul>
         </li>
         <li>
-          <Link to="./" className="flex flex-row items-center h-10 text-white hover:bg-[#57B846]">
+          <Link to="./" className="flex flex-row items-center h-10 text-white hover:bg-primary">
             <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-gray-400"><i className="bx bx-home" /></span>
             <span className="text-sm font-medium ">Flash Deal</span>
           </Link>
         </li>
         <li>
-          <Link to="./" className="flex flex-row items-center h-10 text-white hover:bg-[#57B846]">
+          <Link to="./" className="flex flex-row items-center h-10 text-white hover:bg-primary">
             <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-gray-400"><i className="bx bx-home" /></span>
             <span className="text-sm font-medium ">Orders</span>
-            <span className="ml-auto mr-3 text-sm font-semibold bg-white rounded-full px-2 py-px text-[#57B846]">18</span>
+            <span className="ml-auto mr-3 text-sm font-semibold bg-white rounded-full px-2 py-px text-primary">18</span>
           </Link>
         </li>
         <li>
-          <button type="button" className="flex items-center pr-3 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-[#57B846]" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+          <button type="button" className="flex items-center pr-3 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-primary" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
             <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-white"><i className="bx bx-home" /></span>
             <span className="flex-1 text-left text-base font-medium whitespace-nowrap" sidebar-toggle-item>Invoice</span>
             <svg sidebar-toggle-item className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
@@ -118,13 +133,13 @@ const Dash = () => {
           </ul>
         </li>
         <li>
-          <Link to="./" className="flex flex-row items-center h-10 text-white hover:bg-[#57B846]">
+          <Link to="./" className="flex flex-row items-center h-10 text-white hover:bg-primary">
             <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-gray-400"><i className="bx bx-home" /></span>
             <span className="text-sm font-medium ">Pick-up Point Order</span>
           </Link>
         </li>
         <li>
-          <button type="button" className="flex items-center pr-3 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-[#57B846]" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+          <button type="button" className="flex items-center pr-3 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-primary" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
             <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-white"><i className="bx bx-home" /></span>
             <span className="flex-1 text-left text-base font-medium whitespace-nowrap" sidebar-toggle-item>Customers</span>
             <svg sidebar-toggle-item className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
@@ -141,7 +156,7 @@ const Dash = () => {
           </ul>
         </li>
         <li>
-          <button type="button" className="flex items-center pr-3 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-[#57B846]" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+          <button type="button" className="flex items-center pr-3 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-primary" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
             <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-white"><i className="bx bx-home" /></span>
             <span className="flex-1 text-left text-base font-medium whitespace-nowrap" sidebar-toggle-item>Reports</span>
             <svg sidebar-toggle-item className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
@@ -158,7 +173,7 @@ const Dash = () => {
           </ul>
         </li>
         <li>
-          <button type="button" className="flex items-center pr-3 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-[#57B846]" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+          <button type="button" className="flex items-center pr-3 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-primary" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
             <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-white"><i className="bx bx-home" /></span>
             <span className="flex-1 text-left text-base font-medium whitespace-nowrap" sidebar-toggle-item>Business Settings</span>
             <svg sidebar-toggle-item className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
@@ -175,7 +190,7 @@ const Dash = () => {
           </ul>
         </li>
         <li>
-          <button type="button" className="flex items-center pr-3 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-[#57B846]" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+          <button type="button" className="flex items-center pr-3 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-primary" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
             <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-white"><i className="bx bx-home" /></span>
             <span className="flex-1 text-left text-base font-medium whitespace-nowrap" sidebar-toggle-item>Front End Setup</span>
             <svg sidebar-toggle-item className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
@@ -192,7 +207,7 @@ const Dash = () => {
           </ul>
         </li>
         <li>
-          <button type="button" className="flex items-center pr-3 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-[#57B846]" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+          <button type="button" className="flex items-center pr-3 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-primary" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
             <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-white"><i className="bx bx-home" /></span>
             <span className="flex-1 text-left text-base font-medium whitespace-nowrap" sidebar-toggle-item>E-Commerce Setup</span>
             <svg sidebar-toggle-item className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
@@ -209,25 +224,25 @@ const Dash = () => {
           </ul>
         </li>
         <li>
-          <Link to="./" className="flex flex-row items-center h-10 text-white hover:bg-[#57B846]">
+          <Link to="./" className="flex flex-row items-center h-10 text-white hover:bg-primary">
             <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-gray-400"><i className="bx bx-home" /></span>
             <span className="text-base font-medium">Payment Gateway</span>
           </Link>
         </li>
         <li>
-          <Link to="./" className="flex flex-row items-center h-10 text-white hover:bg-[#57B846]">
+          <Link to="./" className="flex flex-row items-center h-10 text-white hover:bg-primary">
             <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-gray-400"><i className="bx bx-home" /></span>
             <span className="text-base font-medium">Support Ticket</span>
           </Link>
         </li>
         <li>
-          <Link to="./" className="flex flex-row items-center h-10 text-white hover:bg-[#57B846]">
+          <Link to="./" className="flex flex-row items-center h-10 text-white hover:bg-primary">
             <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-gray-400"><i className="bx bx-home" /></span>
             <span className="text-base font-medium">Blog</span>
           </Link>
         </li>
         <li>
-          <button type="button" className="flex items-center pr-3 mb-10 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-[#57B846]" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+          <button type="button" className="flex items-center pr-3 mb-10 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-primary" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
             <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-white"><i className="bx bx-home" /></span>
             <span className="flex-1 text-left text-base font-medium whitespace-nowrap" sidebar-toggle-item>Staffs</span>
             <svg sidebar-toggle-item className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
@@ -248,10 +263,10 @@ const Dash = () => {
   </div>
   {/*Navbar*/}
   <div className="ml-40 sm:ml-80  max-w-full bg-white min-h-screen overflow-x-hidden">
-    <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
+    <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-secoundery">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <Link to="./" className="flex items-center">
-          <img src="img/world.svg" /><h3 className="px-2 text-[#57B846] font-semibold">Browse Frontend</h3>
+          <img src="img/world.svg" /><h3 className="px-2 text-primary font-semibold">Browse Frontend</h3>
         </Link>
         <div className="flex items-center md:order-2">
           <Link to="./"><img className="px-3 py-1 mt-1" src="img/message.svg" /></Link>
@@ -267,7 +282,7 @@ const Dash = () => {
               <span className="block text-sm font-semibold text-center text-[#57BB46] dark:text-white">Messages</span>
             </div>
             <ul className="py-1" aria-labelledby="user-menu-button">
-              <li className=" shadow mb-2 rounded hover:bg-gray-900 hover:text-white">
+              <li className=" shadow mb-2 rounded hover:bg-secoundery hover:text-white">
                 <Link to="./">
                   <div className="flex flex-row ">
                     <div className="basis-1/4 p-1">
@@ -280,7 +295,7 @@ const Dash = () => {
                   </div>
                 </Link>
               </li>
-              <li className=" shadow mb-2 rounded hover:bg-gray-900 hover:text-white">
+              <li className=" shadow mb-2 rounded hover:bg-secoundery hover:text-white">
                 <Link to="./">
                   <div className="flex flex-row ">
                     <div className="basis-1/4 p-1">
@@ -293,7 +308,7 @@ const Dash = () => {
                   </div>
                 </Link>
               </li>
-              <li className=" shadow mb-2 rounded hover:bg-gray-900 hover:text-white">
+              <li className=" shadow mb-2 rounded hover:bg-secoundery hover:text-white">
                 <Link to="./">
                   <div className="flex flex-row ">
                     <div className="basis-1/4 p-1">
@@ -306,7 +321,7 @@ const Dash = () => {
                   </div>
                 </Link>
               </li>
-              <li className=" shadow mb-2 rounded hover:bg-gray-900 hover:text-white">
+              <li className=" shadow mb-2 rounded hover:bg-secoundery hover:text-white">
                 <Link to="./">
                   <div className="flex flex-row ">
                     <div className="basis-1/4 p-1">
@@ -319,7 +334,7 @@ const Dash = () => {
                   </div>
                 </Link>
               </li>
-              <li className=" shadow mb-2 rounded hover:bg-gray-900 hover:text-white">
+              <li className=" shadow mb-2 rounded hover:bg-secoundery hover:text-white">
                 <Link to="./">
                   <div className="flex flex-row ">
                     <div className="basis-1/4 p-1">
@@ -341,7 +356,7 @@ const Dash = () => {
           <div className="hidden absolute right-4 top-12 z-50 my-3 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
             <Link to="./">
               <div className="py-3 px-4">
-                <span className="block text-sm font-semibold text-gray-900 dark:text-white">Abubakar Aziz</span>
+                <span className="block text-sm font-semibold text-secoundery dark:text-white">Abubakar Aziz</span>
                 <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">abubakar@example.com</span>
               </div>
             </Link>
@@ -364,9 +379,9 @@ const Dash = () => {
           <Link to="./" className="block max-w-lg bg-white px-3 py-3 rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <div className="flex">
               <div className="flex-auto w-3/4 ">
-                <h5 className="mb-1 text-sm font-bold tracking-tight text-[#57B846] dark:text-white">Today Sales</h5>
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">$20.4k</h5>
-                <p className=" text-xs font-medium tracking-tight text-[#57B846] dark:text-white">We have Sold 123 Items</p>     
+                <h5 className="mb-1 text-sm font-bold tracking-tight text-primary dark:text-white">Today Sales</h5>
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-secoundery dark:text-white">$20.4k</h5>
+                <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
                 <img src="img/card.svg" />
@@ -378,9 +393,9 @@ const Dash = () => {
           <Link to="./" className="block max-w-lg bg-white px-3 py-3 rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <div className="flex">
               <div className="flex-auto w-3/4 ">
-                <h5 className="mb-1 text-sm font-bold tracking-tight text-[#57B846] dark:text-white">Today Sales</h5>
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">$20.4k</h5>
-                <p className=" text-xs font-medium tracking-tight text-[#57B846] dark:text-white">We have Sold 123 Items</p>     
+                <h5 className="mb-1 text-sm font-bold tracking-tight text-primary dark:text-white">Today Sales</h5>
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-secoundery dark:text-white">$20.4k</h5>
+                <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
                 <img src="img/cardblack.svg" />
@@ -392,9 +407,9 @@ const Dash = () => {
           <Link to="./" className="block max-w-lg bg-white px-3 py-3 rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <div className="flex">
               <div className="flex-auto w-3/4 ">
-                <h5 className="mb-1 text-sm font-bold tracking-tight text-[#57B846] dark:text-white">Today Sales</h5>
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">$20.4k</h5>
-                <p className=" text-xs font-medium tracking-tight text-[#57B846] dark:text-white">We have Sold 123 Items</p>     
+                <h5 className="mb-1 text-sm font-bold tracking-tight text-primary dark:text-white">Today Sales</h5>
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-secoundery dark:text-white">$20.4k</h5>
+                <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
                 <img src="img/card.svg" />
@@ -406,9 +421,9 @@ const Dash = () => {
           <Link to="./" className="block max-w-lg bg-white px-3 py-3 rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <div className="flex">
               <div className="flex-auto w-3/4 ">
-                <h5 className="mb-1 text-sm font-bold tracking-tight text-[#57B846] dark:text-white">Today Sales</h5>
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">$20.4k</h5>
-                <p className=" text-xs font-medium tracking-tight text-[#57B846] dark:text-white">We have Sold 123 Items</p>     
+                <h5 className="mb-1 text-sm font-bold tracking-tight text-primary dark:text-white">Today Sales</h5>
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-secoundery dark:text-white">$20.4k</h5>
+                <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
                 <img src="img/cardblack.svg" />
@@ -420,9 +435,9 @@ const Dash = () => {
           <Link to="./" className="block max-w-lg bg-white px-3 py-3 rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <div className="flex">
               <div className="flex-auto w-3/4 ">
-                <h5 className="mb-1 text-sm font-bold tracking-tight text-[#57B846] dark:text-white">Today Sales</h5>
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">$20.4k</h5>
-                <p className=" text-xs font-medium tracking-tight text-[#57B846] dark:text-white">We have Sold 123 Items</p>     
+                <h5 className="mb-1 text-sm font-bold tracking-tight text-primary dark:text-white">Today Sales</h5>
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-secoundery dark:text-white">$20.4k</h5>
+                <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
                 <img src="img/card.svg" />
@@ -439,9 +454,9 @@ const Dash = () => {
           <Link to="./" className="block max-w-lg bg-white px-3 py-3 rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <div className="flex">
               <div className="flex-auto w-3/4 ">
-                <h5 className="mb-1 text-sm font-bold tracking-tight text-[#57B846] dark:text-white">Today Sales</h5>
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">$20.4k</h5>
-                <p className=" text-xs font-medium tracking-tight text-[#57B846] dark:text-white">We have Sold 123 Items</p>     
+                <h5 className="mb-1 text-sm font-bold tracking-tight text-primary dark:text-white">Today Sales</h5>
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-secoundery dark:text-white">$20.4k</h5>
+                <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
                 <img src="img/custumer.svg" />
@@ -453,9 +468,9 @@ const Dash = () => {
           <Link to="./" className="block max-w-lg bg-white px-3 py-3 rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <div className="flex">
               <div className="flex-auto w-3/4 ">
-                <h5 className="mb-1 text-sm font-bold tracking-tight text-[#57B846] dark:text-white">Today Sales</h5>
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">$20.4k</h5>
-                <p className=" text-xs font-medium tracking-tight text-[#57B846] dark:text-white">We have Sold 123 Items</p>     
+                <h5 className="mb-1 text-sm font-bold tracking-tight text-primary dark:text-white">Today Sales</h5>
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-secoundery dark:text-white">$20.4k</h5>
+                <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
                 <img src="img/totalpro.svg" />
@@ -467,9 +482,9 @@ const Dash = () => {
           <Link to="./" className="block max-w-lg bg-white px-3 py-3 rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <div className="flex">
               <div className="flex-auto w-3/4 ">
-                <h5 className="mb-1 text-sm font-bold tracking-tight text-[#57B846] dark:text-white">Today Sales</h5>
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">$20.4k</h5>
-                <p className=" text-xs font-medium tracking-tight text-[#57B846] dark:text-white">We have Sold 123 Items</p>     
+                <h5 className="mb-1 text-sm font-bold tracking-tight text-primary dark:text-white">Today Sales</h5>
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-secoundery dark:text-white">$20.4k</h5>
+                <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
                 <img src="img/totalorder.svg" />
@@ -481,9 +496,9 @@ const Dash = () => {
           <Link to="./" className="block max-w-lg bg-white px-3 py-3 rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <div className="flex">
               <div className="flex-auto w-3/4 ">
-                <h5 className="mb-1 text-sm font-bold tracking-tight text-[#57B846] dark:text-white">Today Sales</h5>
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">$20.4k</h5>
-                <p className=" text-xs font-medium tracking-tight text-[#57B846] dark:text-white">We have Sold 123 Items</p>     
+                <h5 className="mb-1 text-sm font-bold tracking-tight text-primary dark:text-white">Today Sales</h5>
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-secoundery dark:text-white">$20.4k</h5>
+                <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
                 <img src="img/Categor.svg" />
@@ -495,9 +510,9 @@ const Dash = () => {
           <Link to="./" className="block max-w-lg bg-white px-3 py-3 rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <div className="flex">
               <div className="flex-auto w-3/4 ">
-                <h5 className="mb-1 text-sm font-bold tracking-tight text-[#57B846] dark:text-white">Today Sales</h5>
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">$20.4k</h5>
-                <p className=" text-xs font-medium tracking-tight text-[#57B846] dark:text-white">We have Sold 123 Items</p>     
+                <h5 className="mb-1 text-sm font-bold tracking-tight text-primary dark:text-white">Today Sales</h5>
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-secoundery dark:text-white">$20.4k</h5>
+                <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
                 <img src="img/card.svg" />
@@ -514,9 +529,9 @@ const Dash = () => {
           <Link to="./" className="block max-w-lg bg-white px-3 py-3 rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <div className="flex">
               <div className="flex-auto w-3/4 ">
-                <h5 className="mb-1 text-sm font-bold tracking-tight text-[#57B846] dark:text-white">Today Sales</h5>
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">$20.4k</h5>
-                <p className=" text-xs font-medium tracking-tight text-[#57B846] dark:text-white">We have Sold 123 Items</p>     
+                <h5 className="mb-1 text-sm font-bold tracking-tight text-primary dark:text-white">Today Sales</h5>
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-secoundery dark:text-white">$20.4k</h5>
+                <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
                 <img src="img/card.svg" />
@@ -528,9 +543,9 @@ const Dash = () => {
           <Link to="./" className="block max-w-lg bg-white px-3 py-3 rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <div className="flex">
               <div className="flex-auto w-3/4 ">
-                <h5 className="mb-1 text-sm font-bold tracking-tight text-[#57B846] dark:text-white">Today Sales</h5>
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">$20.4k</h5>
-                <p className=" text-xs font-medium tracking-tight text-[#57B846] dark:text-white">We have Sold 123 Items</p>     
+                <h5 className="mb-1 text-sm font-bold tracking-tight text-primary dark:text-white">Today Sales</h5>
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-secoundery dark:text-white">$20.4k</h5>
+                <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
                 <img src="img/card.svg" />
@@ -542,9 +557,9 @@ const Dash = () => {
           <Link to="./" className="block max-w-lg bg-white px-3 py-3 rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <div className="flex">
               <div className="flex-auto w-3/4 ">
-                <h5 className="mb-1 text-sm font-bold tracking-tight text-[#57B846] dark:text-white">Today Sales</h5>
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">$20.4k</h5>
-                <p className=" text-xs font-medium tracking-tight text-[#57B846] dark:text-white">We have Sold 123 Items</p>     
+                <h5 className="mb-1 text-sm font-bold tracking-tight text-primary dark:text-white">Today Sales</h5>
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-secoundery dark:text-white">$20.4k</h5>
+                <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
                 <img src="img/procorder.svg" />
@@ -556,9 +571,9 @@ const Dash = () => {
           <Link to="./" className="block max-w-lg bg-white px-3 py-3 rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <div className="flex">
               <div className="flex-auto w-3/4 ">
-                <h5 className="mb-1 text-sm font-bold tracking-tight text-[#57B846] dark:text-white">Today Sales</h5>
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">$20.4k</h5>
-                <p className=" text-xs font-medium tracking-tight text-[#57B846] dark:text-white">We have Sold 123 Items</p>     
+                <h5 className="mb-1 text-sm font-bold tracking-tight text-primary dark:text-white">Today Sales</h5>
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-secoundery dark:text-white">$20.4k</h5>
+                <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
                 <img src="img/shipping-truck.svg" />
@@ -570,9 +585,9 @@ const Dash = () => {
           <Link to="./" className="block max-w-lg bg-white px-3 py-3 rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
             <div className="flex">
               <div className="flex-auto w-3/4 ">
-                <h5 className="mb-1 text-sm font-bold tracking-tight text-[#57B846] dark:text-white">Today Sales</h5>
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">$20.4k</h5>
-                <p className=" text-xs font-medium tracking-tight text-[#57B846] dark:text-white">We have Sold 123 Items</p>     
+                <h5 className="mb-1 text-sm font-bold tracking-tight text-primary dark:text-white">Today Sales</h5>
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-secoundery dark:text-white">$20.4k</h5>
+                <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
                 <img src="img/people.svg" />
@@ -604,6 +619,13 @@ const Dash = () => {
               </div>
             </div>
             {/* Required chart.js */}
+            <Chart
+              chartType="PieChart"
+               data={data}
+                options={options}
+               width={"100%"}
+      height={"auto"}
+            />
             {/* Chart pie */}
           </Link>
         </div>
