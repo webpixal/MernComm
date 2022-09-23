@@ -1,13 +1,23 @@
-import React, {useState , createRef} from 'react'
+import React, {useState } from 'react'
 import {Link} from 'react-router-dom'
 import { Chart } from "react-google-charts";
 
-import Card from '../App/asset/card.svg'
-import Bell from '../App/asset/bell.svg'
-import message from '../App/asset/message.svg'
-import Sidebar from '../App/asset/sidebar.svg'
-import Vector from '../App/asset/Vector.svg'
-import world from '../App/asset/world.svg'
+import Card from '../App/asset/card.svg';
+import Bell from '../App/asset/bell.svg';
+import message from '../App/asset/message.svg';
+import Sidebar from '../App/asset/sidebar.svg';
+import Vector from '../App/asset/Vector.svg';
+import world from '../App/asset/world.svg';
+import cardBlack from '../App/asset/cardblack.svg';
+import Category from '../App/asset/Categor.svg';
+import Confrim from '../App/asset/confirmed.svg';
+import Customer from '../App/asset/custumer.svg';
+import Image from '../App/asset/imgp.jpg';
+import People from '../App/asset/people.svg';
+import ProOrder from '../App/asset/procorder.svg';
+import Ship from '../App/asset/shipping-truck.svg'
+import totalOrder from '../App/asset/totalorder.svg';
+import totalProduct from '../App/asset/totalpro.svg';
 
 const Dash = () => {
   const [isProduct, setIsProduct] = useState("false");
@@ -269,15 +279,15 @@ const Dash = () => {
     <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-secoundery">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <Link to="./" className="flex items-center">
-          <img src={world} /><h3 className="px-2 text-primary font-semibold">Browse Frontend</h3>
+          <img src={world} alt=""/><h3 className="px-2 text-primary font-semibold">Browse Frontend</h3>
         </Link>
         <div className="flex items-center md:order-2">
-          <Link to="./"><img className="px-3 py-1 mt-1" src={message} /></Link>
-          <Link to="./"><img className="px-3" src={Bell} /></Link>
+          <Link to="./"><img className="px-3 py-1 mt-1" src={message} alt=""/></Link>
+          <Link to="./"><img className="px-3" src={Bell} alt=""/></Link>
           <h4 className="font-bold px-2">Abubakar</h4>
           <button type="button" className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
             <span className="sr-only" />
-            <img className="w-12 h-12 rounded-full" src={Vector} alt="user photo" />
+            <img className="w-12 h-12 rounded-full" src={Vector} alt="" />
           </button>
           {/* Messages Dropdown menu */}
           <div className="hidden absolute w-96 right-52 top-12 z-50 my-2 text-base list-none bg-white rounded divide-y divide-gray-100 shadow-2xl dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
@@ -289,7 +299,7 @@ const Dash = () => {
                 <Link to="./">
                   <div className="flex flex-row ">
                     <div className="basis-1/4 p-1">
-                      <img src="img/imgp.jpg" className="rounded w-20 h-16 object-cover" />
+                      <img src={Image} className="rounded w-20 h-16 object-cover" alt="" />
                     </div>
                     <div className="basis-3/4 px-1">
                       <h6 className=" font-semibold pt-1">Abubakar</h6>
@@ -302,7 +312,7 @@ const Dash = () => {
                 <Link to="./">
                   <div className="flex flex-row ">
                     <div className="basis-1/4 p-1">
-                      <img src="img/imgp.jpg" className="rounded w-20 h-16 object-cover" />
+                      <img src={Image} className="rounded w-20 h-16 object-cover" alt="" />
                     </div>
                     <div className="basis-3/4 px-1">
                       <h6 className=" font-semibold pt-1">Abubakar</h6>
@@ -315,7 +325,7 @@ const Dash = () => {
                 <Link to="./">
                   <div className="flex flex-row ">
                     <div className="basis-1/4 p-1">
-                      <img src="img/imgp.jpg" className="rounded w-20 h-16 object-cover" />
+                      <img src={Image} className="rounded w-20 h-16 object-cover" alt="" />
                     </div>
                     <div className="basis-3/4 px-1">
                       <h6 className=" font-semibold pt-1">Abubakar</h6>
@@ -328,7 +338,7 @@ const Dash = () => {
                 <Link to="./">
                   <div className="flex flex-row ">
                     <div className="basis-1/4 p-1">
-                      <img src="img/imgp.jpg" className="rounded w-20 h-16 object-cover" />
+                      <img src={Image} className="rounded w-20 h-16 object-cover"  alt=""/>
                     </div>
                     <div className="basis-3/4 px-1">
                       <h6 className=" font-semibold pt-1">Abubakar</h6>
@@ -341,7 +351,7 @@ const Dash = () => {
                 <Link to="./">
                   <div className="flex flex-row ">
                     <div className="basis-1/4 p-1">
-                      <img src="img/imgp.jpg" className="rounded w-20 h-16 object-cover" />
+                      <img src={Image} className="rounded w-20 h-16 object-cover" alt=""/>
                     </div>
                     <div className="basis-3/4 px-1">
                       <h6 className=" font-semibold pt-1">Abubakar</h6>
@@ -387,7 +397,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src={Card} />
+                <img src={Card} alt=""/>
               </div>
             </div>
           </Link>
@@ -401,7 +411,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src="img/cardblack.svg" />
+                <img src={cardBlack} alt=""/>
               </div>
             </div>
           </Link>
@@ -415,7 +425,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src={Card} />
+                <img src={Card} alt="" />
               </div>
             </div>
           </Link>
@@ -429,7 +439,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src="img/cardblack.svg" />
+                <img src={cardBlack} alt=""/>
               </div>
             </div>
           </Link>
@@ -443,7 +453,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src={Card} />
+                <img src={Card} alt=""/>
               </div>
             </div>
           </Link>
@@ -462,7 +472,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src="img/custumer.svg" />
+                <img src={Customer} alt=""/>
               </div>
             </div>
           </Link>
@@ -476,7 +486,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src="img/totalpro.svg" />
+                <img src={totalProduct} alt=""/>
               </div>
             </div>
           </Link>
@@ -490,7 +500,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src="img/totalorder.svg" />
+                <img src={totalOrder} alt=""/>
               </div>
             </div>
           </Link>
@@ -504,7 +514,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src="img/Categor.svg" />
+                <img src={Category} alt=""/>
               </div>
             </div>
           </Link>
@@ -518,7 +528,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src={Card} />
+                <img src={Card} alt=""/>
               </div>
             </div>
           </Link>
@@ -537,7 +547,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src={Card} />
+                <img src={Card} alt="" />
               </div>
             </div>
           </Link>
@@ -551,7 +561,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src={Card} />
+                <img src={Card}alt=""/>
               </div>
             </div>
           </Link>
@@ -565,7 +575,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src="img/procorder.svg" />
+                <img src={ProOrder} alt=""/>
               </div>
             </div>
           </Link>
@@ -579,7 +589,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src="img/shipping-truck.svg" />
+                <img src={Ship} alt=""/>
               </div>
             </div>
           </Link>
@@ -593,7 +603,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src="img/people.svg" />
+                <img src={People} alt=""/>
               </div>
             </div>
           </Link>

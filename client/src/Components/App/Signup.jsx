@@ -11,7 +11,7 @@ const Signup = () => {
       if (auth) {
           navigate('/')
       }
-  }, [])
+  })
 
   const collectData = async () => {
       console.warn(name, email, password);

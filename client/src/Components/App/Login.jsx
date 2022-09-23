@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
 import logo from '../App/asset/logo.webp'
 
@@ -14,7 +14,7 @@ const Login = () => {
       if (auth) {
           navigate("/dashboard")
       }
-  }, [])
+  })
 
   const handleLogin = async () => {
       let result = await fetch("http://localhost:5000/login", {
