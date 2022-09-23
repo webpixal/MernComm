@@ -26,7 +26,7 @@ module.exports = {
             '100%': { opacity: 1, transform: 'translateY(0)' },
         },
         fadeInDown: {
-          '0%': { opacity: 0, transform: 'translateY(-200px)' },
+          '0%': { opacity: 0, transform: 'translateY(20px)' },
           '100%': { opacity: 1, transform: 'translateY(0)' },
       },
         move: {
