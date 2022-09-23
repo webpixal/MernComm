@@ -16,8 +16,10 @@ import Image from '../App/asset/imgp.jpg';
 import People from '../App/asset/people.svg';
 import ProOrder from '../App/asset/procorder.svg';
 import Ship from '../App/asset/shipping-truck.svg'
-import totalOrder from '../App/asset/totalorder.svg';
+import Invo from '../App/asset/invo.svg';
 import totalProduct from '../App/asset/totalpro.svg';
+import Brand from '../App/asset/brand.svg'
+import Orders from '../App/asset/toO.svg'
 
 const Dash = () => {
   const [isProduct, setIsProduct] = useState("false");
@@ -500,7 +502,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src={totalOrder} alt=""/>
+                <img src={Invo} alt=""/>
               </div>
             </div>
           </Link>
@@ -528,7 +530,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src={Card} alt=""/>
+                <img src={Brand} alt=""/>
               </div>
             </div>
           </Link>
@@ -547,7 +549,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src={Card} alt="" />
+                <img src={Orders} alt="" />
               </div>
             </div>
           </Link>
@@ -561,7 +563,7 @@ const Dash = () => {
                 <p className=" text-xs font-medium tracking-tight text-primary dark:text-white">We have Sold 123 Items</p>     
               </div>
               <div className="flex-auto w-1/4 self-center p-1">
-                <img src={Card}alt=""/>
+                <img src={Confrim}alt=""/>
               </div>
             </div>
           </Link>
