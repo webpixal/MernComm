@@ -1,7 +1,7 @@
-import React, {useState } from 'react'
-import {Link} from 'react-router-dom'
+import React, {useState} from 'react'
+import {Link, useNavigate} from 'react-router-dom'
 import { Chart } from "react-google-charts";
-
+// import Asset for Dashboadrd 
 import Card from '../App/asset/card.svg';
 import Bell from '../App/asset/bell.svg';
 import message from '../App/asset/message.svg';
@@ -23,52 +23,59 @@ import Orders from '../App/asset/toO.svg'
 /* Imported Component for drop down menu */
 import Dropdown from './props/Dropdown';
 const Dash = () => {
+// logout auth
 
+const auth = localStorage.getItem('user');
+const navigate =useNavigate();
+const logout = () =>{
+  localStorage.clear();
+  navigate('/')
+}
   /* Start --> List for options of Products */
   const products=[
     {
       label:'Brand',
-      labelLink:'/about',
+      labelLink:'./brand',
     },
     {
       label:'Category',
-      labelLink:'/about',
+      labelLink:'./category',
     },
     {
       label:'Subcategory',
-      labelLink:'/about',
+      labelLink:'./sc',
     },
     {
       label:'Sub Subcategory',
-      labelLink:'/about',
+      labelLink:'./ssc',
     },
     {
       label:'Products',
-      labelLink:'/about',
+      labelLink:'./Products',
     },
     {
       label:'User Discount Product',
-      labelLink:'/about',
+      labelLink:'./udp',
     },
     {
       label:'Classified Products',
-      labelLink:'/about',
+      labelLink:'./cp',
     },
     {
       label:'Digital Proucts',
-      labelLink:'/about',
+      labelLink:'./dp',
     },
     {
       label:'Bulk Import',
-      labelLink:'/about',
+      labelLink:'./bi',
     },
     {
       label:'Bulk Export',
-      labelLink:'/about',
+      labelLink:'./be',
     },
     {
       label:'Product Reviews',
-      labelLink:'/about',
+      labelLink:'./about',
     },
   ];
   /* End --> List for options of Products */
@@ -89,6 +96,7 @@ const Dash = () => {
   /* Start --> List for options of Customers */
   const Customers=[
     {
+      image:'../App/asste/card.svg',
       label:'Customers list',
       labelLink:'/about',
     },
@@ -111,6 +119,13 @@ const Dash = () => {
    const options = {
     colors: ["#57b846", "#101920"],
    };
+
+   const [isUser, setUser] = useState("false");
+
+   const userToggle = () => {
+     setUser(!isUser);
+   };
+
 
   return (
 
@@ -151,9 +166,9 @@ const Dash = () => {
           </Link>
         </li>
         <li>
-          {/* Start --> Component called for Menu of Products */}
-        <Dropdown title={"Invoice"} data={invoices}/>
-        {/* End --> Component called for Menu of Products */}
+          {/* Start --> Component called for Menu of Invoices */}
+        <Dropdown title={"Invoices"} data={invoices}/>
+        {/* End --> Component called for Menu of Invoices */}
         </li>
         <li>
           <Link to="./" className="flex flex-row items-center h-10 text-white hover:bg-primary">
@@ -162,124 +177,48 @@ const Dash = () => {
           </Link>
         </li>
         <li>
-          <button type="button" className="flex items-center pr-3 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-primary" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-            <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-white"><i className="bx bx-home" /></span>
-            <span className="flex-1 text-left text-base font-medium whitespace-nowrap" sidebar-toggle-item>Customers</span>
-            <svg sidebar-toggle-item className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
-          </button>
-          <ul id="mydropside" className="hidden space-y-2">
-            <li>
-              <Link to="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
-                Customers list</Link>
-            </li>
-            <li>
-              <Link to="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
-                Customers Packages</Link>
-            </li>
-          </ul>
+          {/* Start --> Component called for Menu of Customers */}
+        <Dropdown title={"Customer"} data={Customers}/>
+        {/* End --> Component called for Menu of Products */}
+        </li>
+       
+        <li>
+          {/* Start --> Component called for Menu of Customers */}
+        <Dropdown title={"Report"} data={Customers}/>
+        {/* End --> Component called for Menu of Products */}
         </li>
         <li>
-          <button type="button" className="flex items-center pr-3 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-primary" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-            <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-white"><i className="bx bx-home" /></span>
-            <span className="flex-1 text-left text-base font-medium whitespace-nowrap" sidebar-toggle-item>Reports</span>
-            <svg sidebar-toggle-item className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
-          </button>
-          <ul id="mydropside" className="hidden space-y-2">
-            <li>
-              <Link to="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
-                Customers list</Link>
-            </li>
-            <li>
-              <Link to="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
-                Customers Packages</Link>
-            </li>
-          </ul>
+          {/* Start --> Component called for Menu of Customers */}
+        <Dropdown title={"Business Setup"} data={Customers}/>
+        {/* End --> Component called for Menu of Products */}
         </li>
         <li>
-          <button type="button" className="flex items-center pr-3 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-primary" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-            <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-white"><i className="bx bx-home" /></span>
-            <span className="flex-1 text-left text-base font-medium whitespace-nowrap" sidebar-toggle-item>Business Settings</span>
-            <svg sidebar-toggle-item className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
-          </button>
-          <ul id="mydropside" className="hidden space-y-2">
-            <li>
-              <Link to="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
-                Customers list</Link>
-            </li>
-            <li>
-              <Link to="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
-                Customers Packages</Link>
-            </li>
-          </ul>
+          {/* Start --> Component called for Menu of Customers */}
+        <Dropdown title={"Frontend Setup"} data={Customers}/>
+        {/* End --> Component called for Menu of Products */}
         </li>
         <li>
-          <button type="button" className="flex items-center pr-3 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-primary" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-            <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-white"><i className="bx bx-home" /></span>
-            <span className="flex-1 text-left text-base font-medium whitespace-nowrap" sidebar-toggle-item>Front End Setup</span>
-            <svg sidebar-toggle-item className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
-          </button>
-          <ul id="mydropside" className="hidden space-y-2">
-            <li>
-              <Link to="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
-                Customers list</Link>
-            </li>
-            <li>
-              <Link to="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
-                Customers Packages</Link>
-            </li>
-          </ul>
+
+          {/* Start --> Component called for Menu of Customers */}
+        <Dropdown  title={"E-Commerce Setup"} data={Customers}/>
+        {/* End --> Component called for Menu of Products */}
         </li>
         <li>
-          <button type="button" className="flex items-center pr-3 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-primary" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-            <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-white"><i className="bx bx-home" /></span>
-            <span className="flex-1 text-left text-base font-medium whitespace-nowrap" sidebar-toggle-item>E-Commerce Setup</span>
-            <svg sidebar-toggle-item className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
-          </button>
-          <ul id="mydropside" className="hidden space-y-2">
-            <li>
-              <Link to="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
-                Customers list</Link>
-            </li>
-            <li>
-              <Link to="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
-                Customers Packages</Link>
-            </li>
-          </ul>
+          {/* Start --> Component called for Menu of Customers */}
+        <Dropdown title={"Staffs"} data={Customers}/>
+        {/* End --> Component called for Menu of Products */}
         </li>
         <li>
           <Link to="./" className="flex flex-row items-center h-10 text-white hover:bg-primary">
             <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-gray-400"><i className="bx bx-home" /></span>
-            <span className="text-base font-medium">Payment Gateway</span>
+            <span className="text-sm font-normal">Support Ticket</span>
           </Link>
         </li>
         <li>
           <Link to="./" className="flex flex-row items-center h-10 text-white hover:bg-primary">
             <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-gray-400"><i className="bx bx-home" /></span>
-            <span className="text-base font-medium">Support Ticket</span>
+            <span className="text-sm font-normal">Blog</span>
           </Link>
-        </li>
-        <li>
-          <Link to="./" className="flex flex-row items-center h-10 text-white hover:bg-primary">
-            <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-gray-400"><i className="bx bx-home" /></span>
-            <span className="text-base font-medium">Blog</span>
-          </Link>
-        </li>
-        <li>
-          <button type="button" className="flex items-center pr-3 mb-10 w-full text-base font-normal text-white rounded transition duration-75 hover:bg-primary" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-            <span className="inline-flex items-center justify-center h-10 w-10 text-lg text-white"><i className="bx bx-home" /></span>
-            <span className="flex-1 text-left text-base font-medium whitespace-nowrap" sidebar-toggle-item>Staffs</span>
-            <svg sidebar-toggle-item className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
-          </button>
-          <ul id="mydropside" className="hidden space-y-2">
-            <li>
-              <Link to="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
-                Customers list</Link>
-            </li>
-            <li>
-              <Link to="./" className="flex items-center p-1 pl-16 w-full text-base font-normal text-gray-200 rounded transition duration-75  hover:bg-[#57BB46] dark:text-white dark:hover:bg-gray-700">
-                Customers Packages</Link>
-            </li>
-          </ul>
         </li>
       </ul>
     </div>
@@ -295,7 +234,8 @@ const Dash = () => {
           <Link to="./"><img className="px-3 py-1 mt-1" src={message} alt=""/></Link>
           <Link to="./"><img className="px-3" src={Bell} alt=""/></Link>
           <h4 className="font-bold px-2">Abubakar</h4>
-          <button type="button" className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+          <button type="button" 
+          className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
             <span className="sr-only" />
             <img className="w-12 h-12 rounded-full" src={Vector} alt="" />
           </button>
@@ -376,19 +316,19 @@ const Dash = () => {
             </ul>
           </div>
           {/*User Profile Dropdown menu */}
-          <div className="hidden absolute right-4 top-12 z-50 my-3 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
-            <Link to="./">
+          <div className="absolute right-4 top-12 z-50 my-3 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown" onClick={userToggle}>
+            <Link to="./" >
               <div className="py-3 px-4">
                 <span className="block text-sm font-semibold text-secoundery dark:text-white">Abubakar Aziz</span>
                 <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">abubakar@example.com</span>
               </div>
             </Link>
-            <ul className="py-1" aria-labelledby="user-menu-button">
+            <ul className={`py-1 `} aria-labelledby="user-menu-button">
               <li>
                 <Link to="./" className="block py-2 px-4 text-sm text-gray-700 hover:bg-[#57BB46] hover:text-white dark:text-gray-200 dark:hover:text-white">Profile</Link>
               </li>
               <li>
-                <Link to="./" className="block py-2 px-4 text-sm text-gray-700 hover:bg-[#57BB46] hover:text-white dark:text-gray-200 dark:hover:text-white">Logout</Link>
+                { auth ? <Link onClick={logout} to="/" className="block py-2 px-4 text-sm text-gray-700 hover:bg-[#57BB46] hover:text-white dark:text-gray-200 dark:hover:text-white">Logout</Link>:<Link to="/" className="block py-2 px-4 text-sm text-gray-700 hover:bg-[#57BB46] hover:text-white dark:text-gray-200 dark:hover:text-white">login</Link> }
               </li>
             </ul>
           </div>

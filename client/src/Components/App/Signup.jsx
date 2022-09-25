@@ -9,9 +9,9 @@ const Signup = () => {
   useEffect(() => {
       const auth = localStorage.getItem('user');
       if (auth) {
-          navigate('/')
+          navigate('/login')
       }
-  })
+  },[])
 
   const collectData = async () => {
       console.warn(name, email, password);
@@ -19,13 +19,13 @@ const Signup = () => {
           method: 'post',
           body: JSON.stringify({ name, email, password }),
           headers: {
-              'Content-Type': 'json'
+              'Content-Type': 'application/json'
           }
       });
       result = await result.json();
       console.warn(result);
-      localStorage.setItem("user", JSON.stringify(result.result))
-      localStorage.setItem("token", JSON.stringify(result.auth))
+        localStorage.setItem('user', JSON.stringify(result.user));
+          localStorage.setItem('token', JSON.stringify(result.auth));
 
       navigate('/')
   }
