@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import logo from '../App/asset/logo.webp'
 
@@ -7,8 +7,8 @@ import logo from '../App/asset/logo.webp'
 const Login = () => {
 
 
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] =useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const Login = () => {
   }, [])
 
   const handleLogin = async () => {
-    console.warn(email, password);
+    console.warn("email, password", email, password);
       let result = await fetch("http://localhost:5000/login", {
           method: 'post',
           body: JSON.stringify({ email, password }),
@@ -29,8 +29,8 @@ const Login = () => {
       });
       result = await result.json();
       console.warn(result);
-        localStorage.setItem('user', JSON.stringify(result.user));
-          localStorage.setItem('token', JSON.stringify(result.auth));
+        localStorage.setItem('user', JSON.stringify(result));
+          localStorage.setItem('token', JSON.stringify(result));
 
       navigate('/dashboard')
   }
