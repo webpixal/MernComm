@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
 import logo from '../App/asset/logo.webp'
 
+
+
 const Login = () => {
 
 
@@ -17,22 +19,20 @@ const Login = () => {
   }, [])
 
   const handleLogin = async () => {
-    let result = await fetch("http://localhost:5000/login", {
-      method: 'post',
-      body: JSON.stringify({ email, password }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    result = await result.json();
-    console.log(result)
-    if (result.auth) {
-      localStorage.setItem('user', JSON.stringify(result.user));
-      localStorage.setItem('token', JSON.stringify(result.auth));
-      navigate("/dashboard")
-    } else {
-      alert("Please enter connect details")
-    }
+    console.warn(email, password);
+      let result = await fetch("http://localhost:5000/login", {
+          method: 'post',
+          body: JSON.stringify({ email, password }),
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      });
+      result = await result.json();
+      console.warn(result);
+        localStorage.setItem('user', JSON.stringify(result.user));
+          localStorage.setItem('token', JSON.stringify(result.auth));
+
+      navigate('/dashboard')
   }
 
 

@@ -328,7 +328,7 @@ const logout = () =>{
                 <Link to="./" className="block py-2 px-4 text-sm text-gray-700 hover:bg-[#57BB46] hover:text-white dark:text-gray-200 dark:hover:text-white">Profile</Link>
               </li>
               <li>
-                { auth ? <Link onClick={logout} to="/" className="block py-2 px-4 text-sm text-gray-700 hover:bg-[#57BB46] hover:text-white dark:text-gray-200 dark:hover:text-white">Logout</Link>:<Link to="/" className="block py-2 px-4 text-sm text-gray-700 hover:bg-[#57BB46] hover:text-white dark:text-gray-200 dark:hover:text-white">login</Link> }
+                { auth ? <Link onClick={logout} to="/login" className="block py-2 px-4 text-sm text-gray-700 hover:bg-[#57BB46] hover:text-white dark:text-gray-200 dark:hover:text-white">Logout</Link>:<Link to="/" className="block py-2 px-4 text-sm text-gray-700 hover:bg-[#57BB46] hover:text-white dark:text-gray-200 dark:hover:text-white">login</Link> }
               </li>
             </ul>
           </div>
