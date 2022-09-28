@@ -7,8 +7,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 
-
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -36,14 +34,35 @@ const Login = () => {
     });
     result = await result.json();
     console.warn(result);
-    if (result) {
-      localStorage.setItem('user', JSON.stringify(result));
+    if (result.auth) {
+      localStorage.setItem('user', JSON.stringify(result.user));
       localStorage.setItem('token', JSON.stringify(result.token));
-      navigate("/Dashboard")
-      toast.success("Login Sucessful")
+      navigate("/dashboard")
+      toast.success('Acess granted', {
+        position: "top-center",
+        theme: "colored",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        rtl:false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
   } else {
-      alert("Please enter connect details")
-  }
+    
+    toast.error('Unvalid Credancial', {
+      position: "top-center",
+      theme: "colored",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      rtl:false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
+  };
 }
 
 
