@@ -87,17 +87,7 @@ const Login = () => {
               </div>
               <div className="grid justify-items-center">
                 <button onClick={handleLogin} type="submit" className=" w-2/4 text-white bg-primary hover:bg-secoundery focus:ring-4 focus:outline-none focus:ring-primary font-medium rounded-lg text-[18px] px-5 py-4 text-center dark:bg-primary dark:hover:bg-primary dark:focus:ring-primary">Login</button>
-                <ToastContainer
-                  position="top-right"
-                  autoClose={5000}
-                  hideProgressBar
-                  newestOnTop={false}
-                  closeOnClick
-                  rtl={false}
-                  pauseOnFocusLoss
-                  draggable
-                  pauseOnHover
-                />
+                
               </div>
             </form>
           </div>
