@@ -3,6 +3,8 @@ const cors = require('cors')
 const dotenv = require("dotenv");
 const connectDB = require("./config/db.js");
 const User = require('./Model/Users');
+const Jwt = require('jsonwebtoken');
+const jwtKey = 'e-com';
 
 
 dotenv.config();
@@ -19,17 +21,22 @@ app.post("/register", async (req, resp) => {
 });
 
 app.post("/login", async (req, resp) => {
-
-    if (req.body.email && req.body.password) {
-        const user = await User.findOne(req.body).select("-password");
+    if (req.body.password && req.body.email) {
+        let user = await User.findOne(req.body).select("-password");
         if (user) {
-            resp.send(user);
+            Jwt.sign({user}, jwtKey, {expiresIn:"2h"},(err,token)=>{
+                if(err){
+                    resp.send("Something went wrong")  
+                }
+                resp.send({user,auth:token})
+            })
+        } else {
+            resp.send({ result: "No User found" })
         }
-        else {
-            resp.send({ result: 'No Data Found' });
-        }
+    } else {
+        resp.send({ result: "No Data In Server" })
     }
-})
+});
 
 const middleware = (req, res, next) => {
     console.log(`Hello my Middleware`);
