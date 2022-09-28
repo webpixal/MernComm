@@ -1,39 +1,50 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import logo from '../App/asset/logo.webp'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Login = () => {
 
 
+
   const [email, setEmail] = useState('');
-  const [password, setPassword] =useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
     const auth = localStorage.getItem('user');
     if (auth) {
+
       navigate("/dashboard")
+
     }
+
+
   }, [])
 
   const handleLogin = async () => {
+    
     console.warn("email, password", email, password);
-      let result = await fetch("http://localhost:5000/login", {
-          method: 'post',
-          body: JSON.stringify({ email, password }),
-          headers: {
-              'Content-Type': 'application/json'
-          }
-      });
-      result = await result.json();
-      console.warn(result);
-        localStorage.setItem('user', JSON.stringify(result));
-          localStorage.setItem('token', JSON.stringify(result));
-
-      navigate('/dashboard')
+    let result = await fetch("http://localhost:5000/login", {
+      method: 'post',
+      body: JSON.stringify({ email, password }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    result = await result.json();
+    console.warn(result);
+    if (result) {
+      localStorage.setItem('user', JSON.stringify(result));
+      localStorage.setItem('token', JSON.stringify(result.token));
+      navigate("/Dashboard")
+      toast.success("Login Sucessful")
+  } else {
+      alert("Please enter connect details")
   }
+}
 
 
   return (
@@ -57,6 +68,17 @@ const Login = () => {
               </div>
               <div className="grid justify-items-center">
                 <button onClick={handleLogin} type="submit" className=" w-2/4 text-white bg-primary hover:bg-secoundery focus:ring-4 focus:outline-none focus:ring-primary font-medium rounded-lg text-[18px] px-5 py-4 text-center dark:bg-primary dark:hover:bg-primary dark:focus:ring-primary">Login</button>
+                <ToastContainer
+                  position="top-right"
+                  autoClose={5000}
+                  hideProgressBar
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                />
               </div>
             </form>
           </div>
