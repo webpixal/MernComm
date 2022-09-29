@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import logo from '../App/asset/logo.webp'
-import { ToastContainer, toast } from 'react-toastify';
+import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -18,11 +18,11 @@ const Login = () => {
       navigate("/dashboard")
 
     }
-
-
   }, [])
 
   const handleLogin = async () => {
+    const sucess = () => toast("Wow so easy !");
+    const invalid = () => toast("Wow so easy !");
     
     console.warn("email, password", email, password);
     let result = await fetch("http://localhost:5000/login", {
@@ -37,31 +37,10 @@ const Login = () => {
     if (result.auth) {
       localStorage.setItem('user', JSON.stringify(result.user));
       localStorage.setItem('token', JSON.stringify(result.token));
-      navigate("/dashboard")
-      toast.success('Acess granted', {
-        position: "top-center",
-        theme: "colored",
-        autoClose: 5000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        rtl:false,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        });
+      sucess();
+        navigate("/dashboard")
   } else {
-    
-    toast.error('Unvalid Credancial', {
-      position: "top-center",
-      theme: "colored",
-      autoClose: 5000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      rtl:false,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      });
+    invalid();
   };
 }
 
