@@ -41,7 +41,7 @@ const Sideber = () => {
     },
     {
       label:'Products',
-      labelLink:'./Products',
+      labelLink:'/products',
     },
     {
       label:'User Discount Product',

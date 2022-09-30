@@ -8,6 +8,8 @@ import Privet from './Components/App/props/Privet'
 import { ToastContainer, toast } from 'react-toastify';
 
   import 'react-toastify/dist/ReactToastify.css';
+import Products from './Components/App/routes/Products'
+import Add_Product from './Components/App/routes/Add Product'
 
 const App = () => {
   return (
@@ -18,6 +20,8 @@ const App = () => {
       <Route element= {<Privet/>}>
       <Route path="/dashboard" element={<Dash/>}/>
       <Route path="/brand" element={<Brand/>}/>
+      <Route path='/products' element={<Products/>}/>
+      <Route path='/add-product' element={<Add_Product/>}/>
       </Route>
       <Route path="/login" element={<Login/>}/>
       <Route path="/signup" element={<Signup/>}/>
