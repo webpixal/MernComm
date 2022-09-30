@@ -5,10 +5,14 @@ import Login from './Components/App/Login'
 import Brand from './Components/App/routes/brand'
 import Signup from './Components/App/Signup'
 import Privet from './Components/App/props/Privet'
+import { ToastContainer, toast } from 'react-toastify';
+
+  import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
     <BrowserRouter>
+    <ToastContainer />
     {/* Nav Routes */}
       <Routes>
       <Route element= {<Privet/>}>

@@ -214,7 +214,7 @@ const profileToggle = () => {
           {/* Messages Dropdown menu */}
           <div className="hidden absolute w-96 right-52 top-12 z-50 my-2 text-base list-none bg-white rounded divide-y divide-gray-100 shadow-2xl dark:bg-gray-700 dark:divide-gray-600">
             <div className="py-1 px-4">
-              <span className="block text-sm font-semibold text-center text-[#57BB46] dark:text-white">Messages</span>
+              <span className="block text-sm font-semibold text-center text-primary dark:text-white">Messages</span>
             </div>
             <ul className="py-1" aria-labelledby="user-menu-button">
               <li className=" shadow mb-2 rounded hover:bg-secoundery hover:text-white">
@@ -295,12 +295,12 @@ const profileToggle = () => {
                 <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">{JSON.parse(auth).email}</span>
               </div>
             </Link>
-            <ul className={`py-1 `} aria-labelledby="user-menu-button">
+            <ul className="py-1"  aria-labelledby="user-menu-button">
               <li>
-                <Link to="./" className="block py-2 px-4 text-sm text-gray-700 hover:bg-[#57BB46] hover:text-white dark:text-gray-200 dark:hover:text-white">Profile</Link>
+                <Link to="./" className="block py-2 px-4 text-sm text-gray-700 hover:bg-primary hover:text-white dark:text-gray-200 dark:hover:text-white">Profile</Link>
               </li>
               <li>
-                { auth ? <Link onClick={logout} to="/login" className="block py-2 px-4 text-sm text-gray-700 hover:bg-[#57BB46] hover:text-white dark:text-gray-200 dark:hover:text-white">Logout</Link>:<Link to="/" className="block py-2 px-4 text-sm text-gray-700 hover:bg-[#57BB46] hover:text-white dark:text-gray-200 dark:hover:text-white">login</Link> }
+                { auth ? <Link onClick={logout} to="/login" className="block py-2 px-4 text-sm text-gray-700 hover:bg-primary hover:text-white dark:text-gray-200 dark:hover:text-white">Logout</Link>:<Link to="/" className="block py-2 px-4 text-sm text-gray-700 hover:bg-primary hover:text-white dark:text-gray-200 dark:hover:text-white">login</Link> }
               </li>
             </ul>
           </div>

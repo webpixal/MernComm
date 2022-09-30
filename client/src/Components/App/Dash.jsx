@@ -3,9 +3,6 @@ import {Link } from 'react-router-dom'
 import { Chart } from "react-google-charts";
 // import Asset for Dashboadrd 
 import Card from '../App/asset/card.svg';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 import cardBlack from '../App/asset/cardblack.svg';
 import Category from '../App/asset/Categor.svg';
 import Confrim from '../App/asset/confirmed.svg';
@@ -311,17 +308,6 @@ const Dash = () =>{
                 </div>
               </div>
       </div>
-      <ToastContainer
-position="top-right"
-autoClose={5000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-/>
 </div>
 
 
