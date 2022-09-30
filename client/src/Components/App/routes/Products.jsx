@@ -19,7 +19,6 @@ const Products = () => {
         <div className="inline mx-3 ">
         <Link to="/add-product">
           <button type="button"  className="px-5 py-2 text-white bg-[#101920] hover:bg-gray-700 rounded-lg">
-            
             Add New Product</button> </Link>
           <select className="inline ml-3 mr-2  border rounded-md py-2  px-3 w-44 shadow-sm placeholder:italic placeholder:text-slate-400">
             <option disabled selected>Sort By</option>
