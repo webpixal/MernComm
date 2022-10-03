@@ -73,7 +73,7 @@ const Login = () => {
               <div className="relative mb-8">
                 <input className="w-full h-10 text-secoundery placeholder-transparent border-b-2 border-gray-300 peer focus:outline-none focus:border-primary"
                 value={email} onChange={(e) => setEmail(e.target.value)} name="email" type="text" placeholder="john@doe.com" required/>
-                <label className="absolute left-0 -top-3.5 font-semibold text-secoundery text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-secoundery peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-800 peer-focus:text-sm">Email
+                <label className="absolute left-0 -top-3.5 font-semibold text-secoundery text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-secoundery peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-800 peer-focus:text-sm .focus-input100::after">Email
                   address</label>
               </div>
               <div className="relative mb-8">

@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db.js");
 const User = require('./Model/Users');
 const Jwt = require('jsonwebtoken');
+
 const jwtKey = 'e-com';
 
 
@@ -20,6 +21,7 @@ app.post("/register", async (req, resp) => {
     resp.send(result);
 });
 
+/* Auth Controller*/
 app.post("/login", async (req, resp) => {
     if (req.body.password && req.body.email) {
         let user = await User.findOne(req.body).select("-password");
@@ -37,6 +39,10 @@ app.post("/login", async (req, resp) => {
         resp.send({ result: "No Data In Server" })
     }
 });
+
+/* Catagory Routes */
+const category_route = require("./Routes/Category");
+app.use(category_route)
 
 const middleware = (req, res, next) => {
     console.log(`Hello my Middleware`);
