@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const  categorySchema = new mongoose.Schema({
     name: String,
     camission:String,
-    icon:String,
-    banner:String,
+    icon:Array,
+    banner:Array,
     mtitel:String,
     mdiscp:String
     

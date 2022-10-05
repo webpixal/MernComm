@@ -2,20 +2,20 @@ const Category = require("../Model/Category");
 
 const addCategory = async (req, res) => {
   try {
+
+    var arrIcon = [];
+    for(let i=0; i<req.files.length; i++){
+      arrIcon[i] = req.files[i].filename;
+    }
+    var arrBanner = [];
+    for(let j=0; j<req.files.length; j++){
+      arrBanner[j] = req.files[j].filename;
+    }
+
     const catData = await Category.find();
+    
     if (catData.length > 0) {
       let checking = false;
-      // for (let i = 0; i < catData.length; i++) {
-      //   let d = catData[i];
-      //   console.log(d);
-      //   if (
-      //     catData[i]._doc.name.toString().toLowercase() ===
-      //     req.body.name.toLowercase()
-      //   ) {
-      //     checking = true;
-      //     break;
-      //   }
-      // }
       catData.every((i) => {
         if (i.name.toLowerCase() === req.body.name.toLowerCase()) {
           checking = true;
@@ -29,8 +29,8 @@ const addCategory = async (req, res) => {
         const data = new Category({
           name: req.body.name,
           camission: req.body.camission,
-          icon: req.body.icon,
-          banner: req.body.banner,
+          icon: arrIcon,
+          banner: arrBanner,
           mtitel: req.body.mtitel,
           mdiscp: req.body.mdiscp,
         });
@@ -43,8 +43,8 @@ const addCategory = async (req, res) => {
       const data = new Category({
         name: req.body.name,
         camission: req.body.camission,
-        icon: req.body.icon,
-        banner: req.body.banner,
+        icon: arrIcon,
+        banner: arrBanner,
         mtitel: req.body.mtitel,
         mdiscp: req.body.mdiscp,
       });

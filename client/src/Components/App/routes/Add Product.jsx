@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Sideber from '../Sideber'
 
 const Add_Product = () => {
+  
   return (
     <>
       <Sideber/>  
