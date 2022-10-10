@@ -11,15 +11,15 @@ const multer = require("multer");
 
 category_route.use(express.static('public'));
  const storage = multer.diskStorage({
-    destination : function(req,files,cb){
+    destination : function(req,file,cb){
         cb(null,Path.join(__dirname,'../public/category'),function(err,sucess){
             if(err){
                 throw err;
             }
         });
     },
-    filename:function(req,files,cb){
-        const name = Date.now()+'-'+ files.originalname;
+    filename:function(req,file,cb){
+        const name = Date.now()+'-'+ file.originalname;
         cb(null,name, function(err, sucess){
             if(err){
                 throw err;
@@ -28,19 +28,11 @@ category_route.use(express.static('public'));
     } 
  });
 
- const upload = multer({storage:storage})
+ const upload = multer({storage:storage});
+ 
 
 
-category_route.post('/add-category',upload.fields([
-    {
-      name: "icon",
-      maxCount: 1,
-    },
-    {
-      name: "banner",
-      maxCount: 1,
-    }
-  ]), controller.addCategory);
+category_route.post('/add-category',upload.array('icon'), controller.addCategory);
 
 
 module.exports = category_route;

@@ -3,11 +3,11 @@ const Category = require("../Model/Category");
 const addCategory = async (req, res) => {
   try {
 
-    var arrIcon = [];
+    let icon = [];
     for(let i=0; i<req.files.length; i++){
-      arrIcon[i] = req.files[i].filename;
+      icon[i] = req.files[i].filename;
     }
-    var arrBanner = [];
+    let arrBanner = [];
     for(let j=0; j<req.files.length; j++){
       arrBanner[j] = req.files[j].filename;
     }
@@ -29,7 +29,7 @@ const addCategory = async (req, res) => {
         const data = new Category({
           name: req.body.name,
           camission: req.body.camission,
-          icon: arrIcon,
+          icon: icon,
           banner: arrBanner,
           mtitel: req.body.mtitel,
           mdiscp: req.body.mdiscp,
@@ -43,7 +43,7 @@ const addCategory = async (req, res) => {
       const data = new Category({
         name: req.body.name,
         camission: req.body.camission,
-        icon: arrIcon,
+        icon: icon,
         banner: arrBanner,
         mtitel: req.body.mtitel,
         mdiscp: req.body.mdiscp,
