@@ -31,8 +31,8 @@ category_route.use(express.static('public'));
  const upload = multer({storage:storage});
  
 
-
-category_route.post('/add-category',upload.array('icon'), controller.addCategory);
+ category_route.get('/add-category', controller.getCategories);
+category_route.post('/add-category',upload.any('icon'), controller.addCategory);
 
 
 module.exports = category_route;
