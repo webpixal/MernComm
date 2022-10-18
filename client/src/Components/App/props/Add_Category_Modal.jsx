@@ -1,8 +1,28 @@
-import React from 'react'
-import Upload from '../asset/upload.svg'
+import React , { useState } from 'react';
+import Upload from '../asset/upload.svg';
 
 function Add_Category_Modal({visible , onClose}) {
-if(!visible) return null;
+
+  const [name, setName] = useState();
+  const [cammition , setCammition] = useState();
+  const [icon , setIcon] = useState();
+  const [banner, setBanner] = useState();
+  const [mtitel, setMtitel]= useState();
+  const [mdiscrip, setMdiscrip] = useState();
+  
+    // Handles file upload event and updates state
+  function handleUpload(event) {
+    setIcon(event.target.files);
+    console.log(event.target.files);
+  }
+  const saveHandaler = () => { 
+  console.log(name,cammition,icon,banner,mtitel,);
+  
+  };
+
+
+  if(!visible) return null;
+
 
   return (
     <div className='fixed inset-0 bg-secoundery bg-opacity-60 backdrop-blur-lg z-50 flex justify-center items-center'> 
@@ -23,11 +43,11 @@ if(!visible) return null;
               <div className="grid grid-cols-12 gap-4">
                 <div className="col-span-6 sm:col-span-12 md:col-span-6">
                   <label className="block mb-1 text-sm font-normal text-gray-900 dark:text-gray-300">Name</label>
-                  <input type="text" className="block p-2 w-full text-gray-900 rounded-lg border border-gray-400 sm:text-xs dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white focus:ring-1 focus:ring-primary focus:outline-none" placeholder required />
+                  <input value={name} onChange={(e)=>{ setName(e.target.value)}} type="text" className="block p-2 w-full text-gray-900 rounded-lg border border-gray-400 sm:text-xs dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white focus:ring-1 focus:ring-primary focus:outline-none" placeholder required />
                 </div>
                 <div className="col-span-6 sm:col-span-12 md:col-span-6">
                   <label className="block mb-1 text-sm font-normal text-gray-900 dark:text-gray-300">Cammition</label>
-                  <input type="text" className="block p-2 w-full text-gray-900 rounded-lg border border-gray-400 sm:text-xs dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:ring-1 focus:ring-primary focus:outline-none" placeholder required />
+                  <input value={cammition} onChange={(e)=>{ setCammition(e.target.value)}} type="text" className="block p-2 w-full text-gray-900 rounded-lg border border-gray-400 sm:text-xs dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white focus:ring-1 focus:ring-primary focus:outline-none" placeholder required />
                 </div>
                 <div className="col-span-6 sm:col-span-6">
                   <div className="flex w-full">
@@ -36,7 +56,7 @@ if(!visible) return null;
                       <div className="flex flex-col justify-center items-center pt-3 pb-4">
                         <img src={Upload} className="w-10 h-10" />
                       </div>
-                      <input id="dropzone-file" type="file" className="hidden" />
+                      <input onChange={handleUpload} id="dropzone-file" type="file" className="hidden" />
                     </label>
                   </div> 
                 </div>
@@ -47,23 +67,23 @@ if(!visible) return null;
                       <div className="flex flex-col justify-center items-center pt-3 pb-4">
                         <img src={Upload} className="w-10 h-10 " />
                       </div>
-                      <input id="dropzone-file" type="file" className="hidden" />
+                      <input value={banner} onChange={(e)=>{ setBanner(e.target.value)}} id="dropzone-file" type="file" className="hidden" />
                     </label>
                   </div> 
                 </div>
                 <div className="col-span-12 sm:col-span-12">
                   <label className="block mb-1 text-sm font-normal text-gray-900 dark:text-gray-300">Meta Title</label>
-                  <input type="text" className="block p-2 w-full text-gray-900 rounded-lg border border-gray-400 sm:text-xs focus:ring-1 focus:ring-primary focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder required />
+                  <input value={mtitel} onChange={(e)=>{ setMtitel(e.target.value)}} type="text" className="block p-2 w-full text-gray-900 rounded-lg border border-gray-400 sm:text-xs focus:ring-1 focus:ring-primary focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white" placeholder required />
                 </div>
                 <div className="col-span-6 sm:col-span-12">
                   <label className="block mb-1 text-sm font-normal text-gray-900 dark:text-gray-300">Descrpition</label>
-                  <textarea className="block p-2 w-full text-gray-900 rounded-lg border border-gray-400 sm:text-xs focus:ring-1 focus:ring-primary focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white " rows={5} defaultValue={"\n                            "} />
+                  <textarea value={mdiscrip} onChange={(e)=>{ setMdiscrip(e.target.value)}} className="block p-2 w-full text-gray-900 rounded-lg border border-gray-400 sm:text-xs focus:ring-1 focus:ring-primary focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white " rows={5} defaultValue={"\n                            "} />
                 </div>
               </div>
             </div>
             {/* Modal footer */}
             <div className="w-full text-center items-center p-3 rounded-b border-gray-200 dark:border-gray-600 space-y-20">
-              <button type="button" className="py-1 px-4 text-base font-normal text-center text-secoundery bg-primary rounded-lg hover:bg-secoundery hover:text-white focus:ring-4 focus:outline-none">Save Changes</button>
+              <button onClick={saveHandaler} type="button" className="py-1 px-4 text-base font-normal text-center text-secoundery bg-primary rounded-lg hover:bg-secoundery hover:text-white focus:ring-4 focus:outline-none">Save Changes</button>
             </div>
           </form>
 </div>
